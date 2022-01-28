@@ -7,25 +7,31 @@
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/nav.css" />
+ <style>
+/*
+    div#play span{
+        background-color: yellow;
+    }
+*/
+ </style>
  </head>
  <body>
      <header>
-     <h1>Title goes here</h1>
-        <nav class="topnav" id="myTopnav">
-            <a href="index.html" class="active">Home</a>
-            <a href="#" target="_blank">project goes here</a>
-
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-        </nav>
+     <h1>Dom play</h1>
      </header>
-     
-   <main class="wrapper">
 
-       <h2 class="subheader">Title goes here</h2>
-        <p> 
-            
-        </p>
-        
+   <main class="wrapper">
+       <div id="play">
+            <p><span data-actor="bill">Bill: Hello partner how you been?</span></p>
+            <p><span data-actor="tim">Tim: Who me or him.</span></p>
+            <p><span data-actor="rick">Rick: He's talking to me dummy!</span></p>
+            <p><span data-actor="bill">Bill: Calm down there no need to make a fuss.</span></p>
+            <p><span data-actor="tim">Tim: NO! I'm not gonna take disrespact from some random person.</span></p>
+            <p><span data-actor="rick">Rick: Well if there's a problem fight me right now!</span></p>
+            <p><span data-actor="bill">Bill: Guys! calm down, stop being childish. Now lets all calm down and talk it out.</span></p>
+            <p><span data-actor="tim">Tim: Alright fine</span></p>
+            <p><span data-actor="rick">Rick: Okay thats fine</span></p>
+        </div>
      <footer>
       <p><small>&copy; 2021 by 
           Bill Le, All Rights Reserved ~ 
@@ -34,6 +40,38 @@
      </p>
     </footer>
    </main>
-  <script> src="js/main.js"</script>
+   <script>
+
+       const spans = document.querySelectorAll('div#play span');
+
+       console.log(spans);
+
+       for(const mySpan of spans){
+           mySpan.addEventListener('click',function(ev){
+               //alert(mySpan.dataset.actor);
+
+               highlightActor(mySpan.dataset.actor);
+
+            });
+       }
+
+       function myAlert(){
+           alert("I'm clicked");
+       }
+       function highlightActor(actor){
+
+        for(const mySpan of spans){
+            if(actor == mySpan.dataset.actor){
+                mySpan.style.backgroundColor = "yellow"
+            }else{
+                mySpan.style.backgroundColor = "white"
+            }
+        }
+    }
+
+
+       //domcument.querySelector('span.hamlet').style.backgroundColor = "yellow";
+   </script>
+  <script src="js/main.js"></script>
  </body>
 </html>
